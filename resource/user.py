@@ -45,7 +45,7 @@ class UserResource(Resource):
     @token_required
     def get(self, current_user, *args, **kwargs):
         # check current account is admin or not
-        item = Account.query.filter_by(id=kwargs["account_id"]).first()
+        item = Account.query.filter_by(id=kwargs["user_id"]).first()
         if not item:
             return {
             "statusCode": 400,
@@ -94,7 +94,7 @@ class UserResource(Resource):
     def delete(self,current_user, *args, **kwargs):
         # Start a sesssion transaction
         # Get account for delete
-        account = Account.query.filter_by(id=kwargs["account_id"]).first()
+        account = Account.query.filter_by(id=kwargs["user_id"]).first()
         if not account:
             return {
             "statusCode": 400,
@@ -111,7 +111,7 @@ class UserResource(Resource):
     def put(self,current_user, *args, **kwargs):
         # Receive data from request
         args = parser.parse_args()
-        account: Account = Account.query.filter_by(id=kwargs["account_id"]).first()
+        account: Account = Account.query.filter_by(id=kwargs["user_id"]).first()
         if not account:
             return {
             "statusCode": 400,
