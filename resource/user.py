@@ -30,7 +30,6 @@ class UserListResource(Resource):
             "is_admin": item.is_admin,
             "is_active": item.is_active,
             "created_at": item.created_at.strftime("%Y-%m-%d")
-            
         } for item in users]
         return {
             "statusCode": 200,
