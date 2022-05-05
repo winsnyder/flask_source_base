@@ -1,9 +1,9 @@
 from app import db
 from app.jwt import token_required
-from model.comment import Comment
+from models.comment import Comment
 from flask_restful import Resource, reqparse
 
-from model.post import Post
+from models.post import Post
 
 parser = reqparse.RequestParser()
 parser.add_argument("content", type=str)

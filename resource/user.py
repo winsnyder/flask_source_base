@@ -1,7 +1,7 @@
 import bcrypt
 from app import db
 from app.jwt import token_required
-from model.account import Account
+from models.account import Account
 from flask_restful import Resource, reqparse, fields
 
 parser = reqparse.RequestParser()

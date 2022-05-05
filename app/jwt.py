@@ -2,7 +2,7 @@ import jwt
 from app import app
 from flask import request
 from functools import wraps
-from model.account import Account
+from models.account import Account
 
 # decorator for verifying the JWT
 def token_required(f):

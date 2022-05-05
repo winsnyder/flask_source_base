@@ -1,6 +1,6 @@
 from app import db
 from app.jwt import token_required
-from model.topic import Topic
+from models.topic import Topic
 from flask_restful import Resource, reqparse, fields
 
 parser = reqparse.RequestParser()
