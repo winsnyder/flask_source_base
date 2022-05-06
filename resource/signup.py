@@ -1,9 +1,9 @@
 import bcrypt
 from app import db
-from model.account import Account
-from model.post import Post
-from model.comment import Comment
-from model.post import Post
+from models.account import Account
+from models.post import Post
+from models.comment import Comment
+from models.post import Post
 from flask_restful import Resource, marshal, reqparse, fields, marshal_with
 
 parser = reqparse.RequestParser()

@@ -2,7 +2,7 @@ import datetime
 import bcrypt
 import jwt
 from app import app
-from model.account import Account
+from models.account import Account
 from flask_restful import Resource, marshal, reqparse, fields, marshal_with
 
 parser = reqparse.RequestParser()

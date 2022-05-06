@@ -2,10 +2,10 @@ import werkzeug
 import base64
 from app import db
 from app.jwt import token_required
-from model.post import Post
+from models.post import Post
 from flask_restful import Resource, reqparse
 
-from model.topic import Topic
+from models.topic import Topic
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
