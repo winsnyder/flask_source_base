@@ -1,7 +1,9 @@
 from app import db
 from app.jwt import token_required
 from models.project import Project
+from models.task import Task
 from flask_restful import Resource, reqparse, fields
+import json
 
 parser = reqparse.RequestParser()
 parser.add_argument("project_name", type=str)
@@ -63,6 +65,16 @@ class ProjectResource(Resource):
             deadline=args["deadline"],
         )
         db.session.add(project)
+        db.session.commit()
+
+        # Create task follow
+        task = Task(
+            project_id=project.id,
+            data=json.dumps({
+                "lanes": []
+            }),
+        )
+        db.session.add(task)
         db.session.commit()
         return {
             "statusCode": 201,

@@ -33,7 +33,7 @@ class TaskListResource(Resource):
 class TaskResource(Resource):
 
     def get(self, *args, **kwargs):
-        task = Task.query.filter_by(id=kwargs["task_id"]).first()
+        task = Task.query.filter_by(project_id=kwargs["task_id"]).first()
         if not task:
             return {
                 "statusCode": 400,
@@ -63,7 +63,7 @@ class TaskResource(Resource):
     @token_required
     def put(self, current_user, *args, **kwargs):
         args = parser.parse_args()
-        task = Task.query.filter_by(id=kwargs["task_id"]).first()
+        task = Task.query.filter_by(project_id=kwargs["task_id"]).first()
         if not task:
             return {
                 "statusCode": 400,
