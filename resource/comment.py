@@ -3,12 +3,12 @@ from app.jwt import token_required
 from models.comment import Comment
 from flask_restful import Resource, reqparse
 
-from models.post import Post
+from models.project import Project
 
 parser = reqparse.RequestParser()
 parser.add_argument("content", type=str)
 parser.add_argument("author", type=str)
-parser.add_argument("post_id", type=int)
+parser.add_argument("project_id", type=int)
 
 def commentReponse(item):
     return {
@@ -23,7 +23,7 @@ class CommentListResource(Resource):
 
     def get(self, *args, **kwargs):
         args = parser.parse_args()
-        comments = Comment.query.filter_by(post_id=int(args["post_id"])).order_by(Comment.id.desc())
+        comments = Comment.query.filter_by(project_id=int(args["project_id"])).order_by(Comment.id.desc())
         data_response = [commentReponse(item) for item in comments]
         return {
             "statusCode": 200,
@@ -48,8 +48,8 @@ class CommentResource(Resource):
 
     def post(self, *args, **kwargs):
         args = parser.parse_args()
-        post = Post.query.filter_by(id=int(args["post_id"])).first()
-        if not post:
+        project = Project.query.filter_by(id=int(args["project_id"])).first()
+        if not project:
             return {
             "statusCode": 400,
             "message": "Post not exists!"
@@ -58,7 +58,7 @@ class CommentResource(Resource):
         comment = Comment(
             author=args["author"],
             content=args["content"],
-            post=post
+            project=project
         )
         db.session.add(comment)
         db.session.commit()

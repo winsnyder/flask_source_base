@@ -9,7 +9,6 @@ class Post(db.Model):
     image = db.Column(db.String())
     is_publish = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
-    comments = db.relationship('Comment', backref='post', lazy=True, cascade="all,delete-orphan")
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
         nullable=False)
     topic_id = db.Column(db.Integer, db.ForeignKey('topic.id'),

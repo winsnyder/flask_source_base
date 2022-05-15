@@ -10,6 +10,7 @@ class Project(db.Model):
     tasks = db.relationship('Task', backref='project',
                             lazy=True, cascade="all,delete-orphan")
     created_at = db.Column(db.DateTime, default=datetime.now())
+    comments = db.relationship('Comment', backref='project', lazy=True, cascade="all,delete-orphan")
 
     def __repr__(self):
         return '<Project {}>'.format(self.project_name)
