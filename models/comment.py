@@ -7,5 +7,5 @@ class Comment(db.Model):
     content = db.Column(db.String(200))
     author = db.Column(db.String(200))
     created_at = db.Column(db.DateTime, default=datetime.now())
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'),
+    image_id = db.Column(db.Integer, db.ForeignKey('image.id'),
         nullable=False)

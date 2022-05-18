@@ -1,5 +1,6 @@
 from app import api
 from models.task import Task
+from models.image import Image
 from resource.contact import ContactListResource, ContactResource
 from resource.post import PostListResource, PostResource
 from resource.user import MeResource, UserListResource, UserResource
@@ -9,6 +10,7 @@ from resource.topic import TopicListResource, TopicResource
 from resource.comment import CommentListResource, CommentResource
 from resource.project import ProjectListResource, ProjectResource
 from resource.task import TaskListResource, TaskResource
+from resource.image import ImageListResource, ImageResource
 
 # Signup a acount
 api.add_resource(SignupResource, "/v1/api/signup")
@@ -49,3 +51,9 @@ api.add_resource(
 api.add_resource(TaskListResource, "/v1/api/tasks")
 api.add_resource(
     TaskResource, "/v1/api/task/<int:task_id>", "/v1/api/task")
+
+# image api
+
+api.add_resource(ImageListResource, "/v1/api/images")
+api.add_resource(
+    ImageResource, "/v1/api/image/<int:image_id>", "/v1/api/image")
